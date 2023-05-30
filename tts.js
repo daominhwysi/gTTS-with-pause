@@ -4,7 +4,6 @@ const data = fs.readFileSync('input.txt', 'utf8');
 if (data == '') {
     console.log('Input Text in input.txt file')
 }
-console.log(data);
 
 const sentences = data.split(/[.?!]/g).filter(Boolean);
 
@@ -32,4 +31,3 @@ fs.writeFile('cache/filenumber.txt', content, err => {
      return;
   }
   });
-console.log(filenumber)
