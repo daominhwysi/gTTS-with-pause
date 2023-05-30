@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "gtts": "^0.2.1",
-    "node-gtts": "^2.0.2"
+    "gtts": "^0.2.1"
   }
 }
