@@ -8,6 +8,7 @@ var line2 = cache[1];
 const data = fs.readFileSync('input.txt', 'utf8');
 if (data == '') {
     console.log('Input Text in input.txt file')
+    process.exit()
 }
 
 const sentences = data.split(/[.?!]/g).filter(Boolean);
@@ -53,7 +54,6 @@ if (line2 == undefined){
     }
     });
 } else {
-  var line2 = Number(line2)
   let content = `${fileCount}\n${line2}`
   fs.writeFile('cache/.cache', content, err => {
     if (err) {
@@ -61,4 +61,7 @@ if (line2 == undefined){
        return;
     }
     });  
+}
+if (line2 != undefined){
+ console.log('Your sequence number of ur audio folder is :', line2)
 }
