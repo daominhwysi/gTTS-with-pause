@@ -1,6 +1,6 @@
 const gtts = require('gtts');
 const fs = require('fs');
-const { lang } = require('./config.json');
+const { lang , breaktime } = require('./config.json');
 
 const cache = fs.readFileSync('cache/.cache', 'utf8').split('\n');
 var line2 = cache[1];
@@ -46,7 +46,7 @@ for (let sentence of sentences) {
   }
 
 if (line2 == undefined){
-  let content = `${fileCount}\n0`
+  let content = `${fileCount}\n0\n${breaktime}`
   fs.writeFile('cache/.cache', content, err => {
     if (err) {
       console.error(err);
@@ -54,7 +54,7 @@ if (line2 == undefined){
     }
     });
 } else {
-  let content = `${fileCount}\n${line2}`
+  let content = `${fileCount}\n${line2}\n${breaktime}`
   fs.writeFile('cache/.cache', content, err => {
     if (err) {
       console.error(err);

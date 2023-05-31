@@ -4,13 +4,16 @@ from time import sleep
 
 fileopen = input('Input Sequence number of your audio folder :')
 with open('cache/.cache', 'r') as f:
-    data = f.readline().strip()
-    print(data)
-i = int(data)
+    line1 = f.readline().strip()
+    line2 = f.readline().strip()
+    line3 = f.readline().strip()
+    print(line1)
+i = int(line1)
+l3 = int(line3)
 filename = 1
 while filename < i:
     file_path = Path(f"audio/ {fileopen}/ {filename}.mp3")
     play_file(file_path)
-    sleep(5)
+    sleep(l3)
     filename += 1
 print('Finished!')
