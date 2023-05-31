@@ -64,4 +64,6 @@ if (line2 == undefined){
 }
 if (line2 != undefined){
  console.log('Your sequence number of ur audio folder is :', line2)
+} else {
+  console.log('Your sequence number of ur audio folder is : 0')
 }
