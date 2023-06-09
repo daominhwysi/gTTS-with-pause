@@ -1,5 +1,10 @@
 import os
 from pathlib import Path
+import random
+import string
+import shutil
+def defolder(file_path):
+ shutil.rmtree(str(file_path))
 def mFolder(folder_path):
     folder_path = Path(folder_path)
     if not os.path.isdir(folder_path):
@@ -17,3 +22,6 @@ def count_files(folder_path):
     return file_count
 def clear():
   os.system('cls' if os.name == 'nt' else 'clear')
+def random_char(length):
+    letters_and_digits = string.ascii_letters + string.digits
+    return ''.join(random.choice(letters_and_digits) for i in range(length))
