@@ -6,10 +6,12 @@ import re
 from function.f88 import mFolder , mFile , clear , random_char , count_files , defolder
 import configparser
 from time import sleep
+import time
+from pydub import AudioSegment
 config = configparser.ConfigParser()
+start = time.time()
 config.read('config.ini')
 clear()
-
 print(' _____     __    __        ______     __   __   __   __    \n/\  __-.  /\ "-./  \      /\  ___\   /\ \ / /  /\ "-.\ \   \n\ \ \/\ \ \ \ \-./\ \     \ \  __\   \ \ \'/   \ \ \-.  \  \n \ \____-  \ \_\ \ \_\     \ \_____\  \ \__|    \ \_\\"\_\ \n  \/____/   \/_/  \/_/      \/_____/   \/_/      \/_/ \/_/ ')
 mFile('input.txt','')
 file_path = Path('input.txt')
@@ -28,31 +30,14 @@ else :
         if i.strip():
             filtered_array.append(i)
 
-    if options == 1:
-     clear()
-     foldername = str(input('Input Folder Name :'))
-     clear()
-     mFolder('audio')
-     if os.path.exists(f'audio/{foldername}'):
-       print(f'Folder {foldername} have already existed!')
-     else:
-      mFolder(f'audio/{foldername}')
-      for i, word in enumerate(filtered_array):
-        tts = gTTS(word, lang = config.get('Config', 'lang'))
-        files = 'audio' + '/' + foldername + '/' + 'file' + str(i) + ".mp3"
-        files = Path(files)
-        tts.save(files)
-        print(f"Created file: {files}")
-      print("\033[1;32mDone!\033[0m")
-    elif options == 2:
-     clear()
-     mFolder('audio')
-     mFolder('audio/temp')
-     foldername = random_char(10)
-     folder_path = Path(f'audio/temp/{foldername}')
-     if os.path.exists(folder_path):
+    mFolder('audio')
+    mFolder('audio/temp')
+    foldername = random_char(10)
+    folder_path = Path(f'audio/temp/{foldername}')
+    clear()
+    if os.path.exists(folder_path):
        print(f'Please try again!')
-     else:
+    else:
       mFolder(folder_path)
       for i, word in enumerate(filtered_array):
         tts = gTTS(word, lang = config.get('Config', 'lang'))
@@ -60,8 +45,24 @@ else :
         tts.save(files)
         print(f"Created file: {files}")
       filenum = count_files(folder_path)
-      print(f'Found {filenum} audio files in {foldername} folder!')
+    if options == 1:
+     outputfile = input('Name of output audio :')
+     breaktime = float(config.get('Config', 'breaktime'))
+     silence_seg = AudioSegment.silent(duration=1000*breaktime) 
+    # Create an empty segment to store the final output
+     output = AudioSegment.empty()
+     for i in range(filenum):
+        # Load the audio file
+        filename = f"{folder_path}/file%d.mp3" % i
+        segment = AudioSegment.from_file(filename)
+        
+        # Add the segment to the output
+        output += segment + silence_seg
 
+    # Export the output to a file
+     output.export(f"audio/{outputfile}.mp3", format="mp3")
+     defolder(folder_path)
+    elif options == 2:
       for i in range(filenum):
           try:
               file_path = Path(f"{folder_path}/file{i}.mp3")
@@ -71,7 +72,10 @@ else :
               print(f'Error playing file{i}.mp3: {str(e)}')
           else:
               print(f'Successfully played file{i}.mp3!')
-      defolder(folder_path)
-      print("\033[1;32mDone!\033[0m")
+              defolder(folder_path)
     else:
       print('Invalid option')
+defolder('audio/temp')
+print("\033[1;32mDone!\033[0m")
+end = time.time()
+print('[Finished in ' + str(round(end - start,2)) + ']')
