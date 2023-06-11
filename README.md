@@ -1,20 +1,19 @@
 # gTTS w/ pause 
 
-**gTTS with pause** is a project desgin to adding pauses to a paragraph by using split turn Text to speech by gTTS(Google Text To Speech) and Combine audio
+**gTTS with pause** is a project desgin to adding pauses to a paragraph by using split turn Text to speech by gTTS (Google Text To Speech) and Combine audio
 
 ## Features
 
-- Include every Feature of gTTS library
+- Include every Feature of gTTS library.
 
-- Allowing users to customize the duration of the breaks
+- Allowing users to customize the duration of the breaks.
+
+- gTTS with pause is its easy-to-use interface, as it only requires the user to input the text inside an input.txt file and run the program with a simple command line. The integration of FFmpeg and Pydub assures the conversion of the audio files is smooth and efficient.
 
 ### Quickstart
 To use this project you have to install FFmpeg to merge audio
 
-
  [![<LABEL>](https://img.shields.io/static/v1?label=FFmpeg&message=Download&color=<COLOR>)](<https://ffmpeg.org/>)
-
-gTTS with pause is its easy-to-use interface, as it only requires the user to input the text inside an input.txt file and run the program with a simple command line. The integration of FFmpeg and Pydub assures the conversion of the audio files is smooth and efficient.
 
 Command Line:
 ```
