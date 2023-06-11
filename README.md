@@ -8,13 +8,13 @@
 
 - Allowing users to customize the duration of the breaks.
 
-- gTTS with pause is its easy-to-use interface, as it only requires the user to input the text inside an input.txt file and run the program with a simple command line. The integration of FFmpeg and Pydub assures the conversion of the audio files is smooth and efficient.
+
 
 ### Quickstart
-To use this project you have to install FFmpeg to merge audio
-
- [![<LABEL>](https://img.shields.io/static/v1?label=FFmpeg&message=Download&color=<COLOR>)](<https://ffmpeg.org/>)
-
+**gTTS with pause** is its easy-to-use interface, as it only requires the user to input the text inside input.txt and install FFmpeg.
+<br></br>
+    [![<LABEL>](https://img.shields.io/static/v1?label=FFmpeg&message=Download&color=<COLOR>)](<https://ffmpeg.org/>)
+<br></br>
 Command Line:
 ```
  $ python tts.py
