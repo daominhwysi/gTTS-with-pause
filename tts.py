@@ -1,7 +1,7 @@
 from gtts import gTTS
 import os
 import re
-from function.f88 import mFolder , mFile , clear , random_char , count_files , defolder
+from function.f88 import mFolder , mFile , random_char , count_files , defolder
 import configparser
 import time
 from pydub import AudioSegment
@@ -9,8 +9,6 @@ from pydub import AudioSegment
 config = configparser.ConfigParser()
 start = time.time()
 config.read('config.ini')
-clear()
-print(' _____     __    __        ______     __   __   __   __    \n/\  __-.  /\ "-./  \      /\  ___\   /\ \ / /  /\ "-.\ \   \n\ \ \/\ \ \ \ \-./\ \     \ \  __\   \ \ \'/   \ \ \-.  \  \n \ \____-  \ \_\ \ \_\     \ \_____\  \ \__|    \ \_\\"\_\ \n  \/____/   \/_/  \/_/      \/_____/   \/_/      \/_/ \/_/ ')
 mFile('input.txt','')
 with open('input.txt', 'r', encoding='utf-8') as file:
     text = file.read().replace('\n', '')

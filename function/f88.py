@@ -20,8 +20,6 @@ def count_files(folder_path):
     for _, _, files in os.walk(folder_path):
         file_count += len(files)
     return file_count
-def clear():
-  os.system('cls' if os.name == 'nt' else 'clear')
 def random_char(length):
     letters_and_digits = string.ascii_letters + string.digits
     return ''.join(random.choice(letters_and_digits) for i in range(length))
