@@ -1,6 +1,6 @@
 # gTTS w/ pause 
 
-**gTTS with pause** is a project desgin to adding pauses to a paragraph by using split, turn Text to speech by gTTS (Google Text To Speech) and Combine audio
+**gTTS with pause** is a project desgin to adding pauses to a paragraph by using split, turn Text to speech by gTTS (Google Text To Speech) and concatenate audio
 
 ## Features
 
